@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-const API = 'http://127.0.0.1:8000';
+const API = 'https://prompt-lab-production-db04.up.railway.app';
 
 // ── Google Fonts ──────────────────────────────────────────────────────────────
 const fontLink = document.createElement('link');
