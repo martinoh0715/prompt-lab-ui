@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-const API = 'https://prompt-lab-production-db04.up.railway.app';
+const API = 'http://127.0.0.1:8000';
 
 // ── Google Fonts ──────────────────────────────────────────────────────────────
 const fontLink = document.createElement('link');
@@ -308,7 +308,7 @@ function DotsMenu({ id, openMenuId, setOpenMenuId, onDelete, isActive, deleteLab
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
-  }, [isOpen]);
+  }, [isOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleOpen = () => {
     if (isOpen) { setOpenMenuId(null); return; }
@@ -506,7 +506,7 @@ function AIVisual() {
   );
 }
 
-function StatPill({ icon, label, value }) {
+function StatPill({ icon, label, value }) { // eslint-disable-line no-unused-vars
   return (
     <div style={{
       display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -950,7 +950,7 @@ function MainContent({ selectedBot, allBots }) {
     setSelectedExperiment(null); setResults(null);
     setOpenForm(null); setTestExperiment(null);
     fetchVersions(); fetchExperiments();
-  }, [selectedBot]);
+  }, [selectedBot]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchVersions = async () => {
     try { const res = await axios.get(`${API}/prompts/${selectedBot}/versions`); setVersions(res.data); }
@@ -1254,10 +1254,9 @@ function App() {
   const [bots, setBots]               = useState([]);
   const [selectedBot, setSelectedBot] = useState(null);
   const [totalVersions, setTotalVersions] = useState(0);
-  const [totalTests, setTotalTests]         = useState(0);
   const [totalExperiments, setTotalExperiments] = useState(0);
 
-  useEffect(() => { fetchBots(); fetchStats(); }, []);
+  useEffect(() => { fetchBots(); fetchStats(); }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchBots = async () => {
     try {
@@ -1298,7 +1297,7 @@ function App() {
     } catch (err) { console.error(err); }
   };
 
-  const runningExp = totalExperiments;
+
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'Inter, sans-serif' }}>
