@@ -1361,7 +1361,7 @@ function App() {
       <HowItWorks />
 
       {/* ── BODY: sidebar + content ── */}
-      <div style={{ flex: 1, display: 'flex', minHeight: '100vh', background: C.pageBg }}>
+      <div style={{ flex: 1, display: 'flex', minHeight: '50vh', background: C.pageBg }}>
         <Sidebar
           bots={bots}
           selectedBot={selectedBot}
